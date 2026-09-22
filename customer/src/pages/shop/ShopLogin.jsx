@@ -28,7 +28,7 @@ export function ShopLogin({ setLoggedIn }) {
         return
       }
       if (profile?.role !== 'SHOP_OWNER' && profile?.role !== 'ADMIN') {
-        setError('This account is not registered as a shop owner. Run the shop-owner role repair migration, then log in again.')
+        setError('This account is not registered as a shop owner. Use "Create Shop Account" to register your shop.')
         return
       }
     }
