@@ -19,7 +19,7 @@ export function ShopSidebar({ onLogout }) {
       <div className="shop-sidebar-brand">
         <div className="shop-brand-mark"><img src={brandLogo} alt="" /></div>
         <div>
-          <strong>Drinkly Shop</strong>
+          <strong>Drinklyy Shop</strong>
         </div>
       </div>
 

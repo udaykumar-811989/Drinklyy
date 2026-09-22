@@ -4,7 +4,7 @@ import { Icon } from './icons'
 export const brandLogo = `${import.meta.env.BASE_URL}logo.png`
 
 export function BottleLogo({ compact = false, linked = true }) {
-  const label = <><img className="logo-img" src={brandLogo} alt="" /><span><strong>Drinkly</strong><small>Good Drinks. On Time.</small></span></>
+  const label = <><img className="logo-img" src={brandLogo} alt="" /><span><strong>Drinklyy</strong><small>Good Drinks. On Time.</small></span></>
   const className = compact ? 'bottle-logo compact' : 'bottle-logo'
   return linked ? <Link className={className} to="/home">{label}</Link> : <div className={className}>{label}</div>
 }

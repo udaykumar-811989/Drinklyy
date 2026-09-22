@@ -24,6 +24,6 @@ export const products = [
   { id: 'sula-red', name: 'Sula Shiraz', brand: 'Sula', category: 'wine', size: '750ml', alcoholPercentage: '13%', price: 799, oldPrice: 899, rating: 4.2, image: bottleImages.wine, description: 'A rich Indian red with ripe berry notes and a smooth, rounded finish.', shopId: 'reserve-cellar', inStock: true },
 ]
 
-export const shops = [{ id: 'drinkly-store', name: 'Drinkly Store', distance: '1.2 km away', eta: '20-30 min' }, { id: 'reserve-cellar', name: 'Reserve Cellar', distance: '2.5 km away', eta: '30-40 min' }]
+export const shops = [{ id: 'drinkly-store', name: 'Drinklyy Store', distance: '1.2 km away', eta: '20-30 min' }, { id: 'reserve-cellar', name: 'Reserve Cellar', distance: '2.5 km away', eta: '30-40 min' }]
 export const orders = [{ id: 'DRK123456', status: 'Out for delivery', total: 597, items: ['Corona Extra', 'Budweiser'], eta: '12 minutes' }]
 export const offers = [{ title: 'Cheers to Good Times!', subtitle: 'Premium Drinks\nDelivered in Minutes', action: 'SHOP NOW' }]

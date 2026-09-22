@@ -58,7 +58,7 @@ export function openRazorpayCheckout({ amount, orderId, orderNumber, customerNam
     key: keyId,
     amount: Math.round(amount * 100),
     currency: 'INR',
-    name: 'Drinkly',
+    name: 'Drinklyy',
     description: `Order ${orderNumber}`,
     order_id: orderId,
     handler: function (response) {

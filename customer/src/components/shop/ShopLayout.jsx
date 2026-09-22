@@ -25,7 +25,7 @@ export function ShopLayout({ title, children, userName = '', shopName = '', loca
           <div className="shop-brand-bar">
             {logoUrl ? <img className="shop-brand-image" src={logoUrl} alt="Shop logo" /> : <div className="shop-brand-mark">{(shopName || userName || 'S').slice(0, 2).toUpperCase()}</div>}
             <div>
-              <strong>{shopName || 'Drinkly Shop'}</strong>
+              <strong>{shopName || 'Drinklyy Shop'}</strong>
               <small>Shop</small>
             </div>
           </div>
@@ -60,7 +60,7 @@ export function ShopLayout({ title, children, userName = '', shopName = '', loca
           <div className="shop-mobile-row">
             <button className="shop-menu-button mobile-only" onClick={() => setDrawerOpen(true)}>☰</button>
             <div className="shop-header-identity">
-              <span className="shop-kicker">Drinkly Shop</span>
+              <span className="shop-kicker">Drinklyy Shop</span>
               <h1>{title}</h1>
             </div>
           </div>
@@ -93,7 +93,7 @@ export function ShopLayout({ title, children, userName = '', shopName = '', loca
             <div className="shop-brand-bar">
               {logoUrl ? <img className="shop-brand-image" src={logoUrl} alt="Shop logo" /> : <div className="shop-brand-mark">{(shopName || userName || 'S').slice(0, 2).toUpperCase()}</div>}
               <div>
-                <strong>{shopName || 'Drinkly Shop'}</strong>
+                <strong>{shopName || 'Drinklyy Shop'}</strong>
                 <small>Shop</small>
               </div>
             </div>

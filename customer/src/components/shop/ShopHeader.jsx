@@ -8,7 +8,7 @@ export function ShopHeader({ shopName, online, onToggleOnline, onLogout }) {
       <div className="shop-header-brand">
         <div className="shop-header-mark">D</div>
         <div>
-          <strong>Drinkly Shop</strong>
+          <strong>Drinklyy Shop</strong>
           <small>{shopName}</small>
         </div>
       </div>

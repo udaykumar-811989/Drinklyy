@@ -55,7 +55,7 @@ export function ShopSignup({ setLoggedIn, onCreated }) {
         <div className="shop-auth-brand">
           <div className="shop-brand-mark large"><img src={brandLogo} alt="" /></div>
           <div>
-            <strong>Drinkly Shop</strong>
+            <strong>Drinklyy Shop</strong>
             <small>Create your store account</small>
           </div>
         </div>
