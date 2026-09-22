@@ -571,8 +571,8 @@ function App() {
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/track-order" element={<TrackOrder customerOrders={customerOrders} />} />
         <Route path="/orders" element={<Orders customerOrders={customerOrders} />} />
-        <Route path="/profile" element={<Profile profile={profile} />} />
-        <Route path="/edit-profile" element={<EditProfile profile={profile} setProfile={setProfile} />} />
+        <Route path="/profile" element={customerLoading ? null : (customerSession ? <Profile profile={profile} /> : <Navigate to="/login" replace />)} />
+        <Route path="/edit-profile" element={customerLoading ? null : (customerSession ? <EditProfile profile={profile} setProfile={setProfile} /> : <Navigate to="/login" replace />)} />
         <Route path="/addresses" element={<Addresses addresses={addresses} setAddresses={setAddresses} selectedAddressId={selectedAddressId} setSelectedAddressId={setSelectedAddressId} customerSession={customerSession} />} />
         <Route path="/payment-methods" element={<PaymentMethods />} />
         <Route path="/notifications" element={<Notifications notifications={notifications} setNotifications={setNotifications} />} />

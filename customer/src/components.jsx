@@ -3,8 +3,10 @@ import { Icon } from './icons'
 
 export const brandLogo = `${import.meta.env.BASE_URL}logo.png`
 
-export function BottleLogo({ compact = false }) {
-  return <Link className={compact ? 'bottle-logo compact' : 'bottle-logo'} to="/home"><img className="logo-img" src={brandLogo} alt="" /><span><strong>Drinkly</strong><small>Good Drinks. On Time.</small></span></Link>
+export function BottleLogo({ compact = false, linked = true }) {
+  const label = <><img className="logo-img" src={brandLogo} alt="" /><span><strong>Drinkly</strong><small>Good Drinks. On Time.</small></span></>
+  const className = compact ? 'bottle-logo compact' : 'bottle-logo'
+  return linked ? <Link className={className} to="/home">{label}</Link> : <div className={className}>{label}</div>
 }
 
 export function PrimaryButton({ children, onClick, type = 'button' }) { return <button className="primary-button" onClick={onClick} type={type}>{children}</button> }

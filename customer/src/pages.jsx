@@ -6,7 +6,7 @@ import { Icon } from './icons'
 import { isSupabaseConfigured } from './lib/supabase'
 import { signIn, signUp, resetPassword } from './services/auth'
 
-export function Splash() { const navigate = useNavigate(); return <div className="splash-screen"><div className="status-time">9:41 <span>•••</span></div><div className="splash-brand"><BottleLogo /><p>Good Drinks. On Time.</p></div><div className="splash-image"><img src={fallbackProducts[0].image} alt="Corona Extra bottle" /><i>✦</i><b>✦</b></div><PrimaryButton onClick={() => navigate('/login')}>GET STARTED</PrimaryButton><p className="auth-switch">Already have an account? <Link to="/login">Log in</Link></p></div> }
+export function Splash() { const navigate = useNavigate(); return <div className="splash-screen"><div className="status-time">9:41 <span>•••</span></div><div className="splash-brand"><BottleLogo linked={false} /><p>Good Drinks. On Time.</p></div><PrimaryButton onClick={() => navigate('/login')}>GET STARTED</PrimaryButton><p className="auth-switch">Already have an account? <Link to="/login">Log in</Link></p></div> }
 
 function AuthLayout({ mode = 'login' }) {
 	const navigate = useNavigate()
@@ -28,23 +28,31 @@ function AuthLayout({ mode = 'login' }) {
 		}
 
 		setLoading(true)
-		const result = isLogin
-			? await signIn({ email: form.email, password: form.password })
-			: await signUp({ email: form.email, password: form.password, fullName: form.fullName })
-		setLoading(false)
+		try {
+			const result = isLogin
+				? await signIn({ email: form.email, password: form.password })
+				: await signUp({ email: form.email, password: form.password, fullName: form.fullName })
 
-		if (result.error) {
-			setError(result.error.message || 'An error occurred. Please try again.')
-			return
+			if (result.error) {
+				const message = result.error.message || ''
+				setError(/rate limit|too many/i.test(message)
+					? 'Too many attempts right now — please wait about an hour and try again.'
+					: (message || 'Something went wrong. Please try again.'))
+				return
+			}
+
+			if (!isLogin) {
+				setSuccess('Account created! Check your email for verification. You can now log in.')
+				setForm({ fullName: '', email: form.email, password: '' })
+				return
+			}
+
+			navigate('/home')
+		} catch (err) {
+			setError(err?.message || 'Something went wrong. Please try again.')
+		} finally {
+			setLoading(false)
 		}
-
-		if (!isLogin) {
-			setSuccess('Account created! Check your email for verification. You can now log in.')
-			setForm({ fullName: '', email: form.email, password: '' })
-			return
-		}
-
-		navigate('/home')
 	}
 
 	const handleForgotPassword = async () => {
