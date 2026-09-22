@@ -592,8 +592,11 @@ function App() {
 }
 
 function RootApp() {
+  // BASE_URL follows the Vite `base` config: '/' in dev, '/Drinklyy/' on GitHub Pages,
+  // so client-side routes work both locally and under the project-site sub-path.
+  const basename = import.meta.env.BASE_URL.replace(/\/+$/, '') || '/'
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
   )
