@@ -4,6 +4,7 @@ import { defaultShopProfile, shopStorageKeys, writeStorage } from '../../data/sh
 import { isSupabaseConfigured } from '../../lib/supabase'
 import { signUp } from '../../services/auth'
 import { createShop } from '../../services/shops'
+import { brandLogo } from '../../components'
 
 export function ShopSignup({ setLoggedIn, onCreated }) {
   const navigate = useNavigate()
@@ -52,7 +53,7 @@ export function ShopSignup({ setLoggedIn, onCreated }) {
     <div className="shop-auth-screen">
       <div className="shop-auth-card">
         <div className="shop-auth-brand">
-          <div className="shop-brand-mark large">D</div>
+          <div className="shop-brand-mark large"><img src={brandLogo} alt="" /></div>
           <div>
             <strong>Drinkly Shop</strong>
             <small>Create your store account</small>

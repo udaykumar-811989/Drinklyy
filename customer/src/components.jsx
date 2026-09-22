@@ -1,8 +1,10 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Icon } from './icons'
 
+export const brandLogo = `${import.meta.env.BASE_URL}logo.png`
+
 export function BottleLogo({ compact = false }) {
-  return <Link className={compact ? 'bottle-logo compact' : 'bottle-logo'} to="/home"><span className="logo-bottle" aria-hidden="true" /><span><strong>Drinkly</strong><small>Good Drinks. On Time.</small></span></Link>
+  return <Link className={compact ? 'bottle-logo compact' : 'bottle-logo'} to="/home"><img className="logo-img" src={brandLogo} alt="" /><span><strong>Drinkly</strong><small>Good Drinks. On Time.</small></span></Link>
 }
 
 export function PrimaryButton({ children, onClick, type = 'button' }) { return <button className="primary-button" onClick={onClick} type={type}>{children}</button> }

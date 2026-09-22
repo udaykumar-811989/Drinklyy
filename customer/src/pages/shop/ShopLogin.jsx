@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { shopStorageKeys, writeStorage } from '../../data/shopData'
 import { isSupabaseConfigured } from '../../lib/supabase'
 import { getCurrentProfile, signIn } from '../../services/auth'
+import { brandLogo } from '../../components'
 
 export function ShopLogin({ setLoggedIn }) {
   const navigate = useNavigate()
@@ -41,7 +42,7 @@ export function ShopLogin({ setLoggedIn }) {
     <div className="shop-auth-screen">
       <div className="shop-auth-card">
         <div className="shop-auth-brand">
-          <div className="shop-brand-mark large">D</div>
+          <div className="shop-brand-mark large"><img src={brandLogo} alt="" /></div>
           <div>
             <strong>Drinkly Shop</strong>
             <small>Owner portal</small>

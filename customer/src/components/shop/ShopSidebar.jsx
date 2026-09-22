@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { brandLogo } from '../../components'
 
 const items = [
   ['Dashboard', '/shop/dashboard'],
@@ -16,7 +17,7 @@ export function ShopSidebar({ onLogout }) {
   return (
     <aside className="shop-sidebar">
       <div className="shop-sidebar-brand">
-        <div className="shop-brand-mark">D</div>
+        <div className="shop-brand-mark"><img src={brandLogo} alt="" /></div>
         <div>
           <strong>Drinkly Shop</strong>
         </div>

@@ -53,6 +53,13 @@
   font-size: 26px;
 }
 
+.shop-brand-mark img {
+  border-radius: inherit;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
 .shop-sidebar-nav,
 .shop-drawer-nav {
   display: flex;
