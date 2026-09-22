@@ -1,16 +1,27 @@
 import { requireSupabase, supabase } from '../lib/supabase'
 
+// Emails are case-insensitive: normalize so "User@Gmail.com " still matches.
+const normalizeEmail = (email) => (email || '').trim().toLowerCase()
+
+// Absolute in-app URL that respects the deploy base path (/, /Drinklyy/, ...).
+const appUrl = (path) => window.location.origin + import.meta.env.BASE_URL + path
+
 export async function signUp({ email, password, fullName, role = 'CUSTOMER' }) {
   const client = requireSupabase()
   return client.auth.signUp({
-    email,
+    email: normalizeEmail(email),
     password,
-    options: { data: { full_name: fullName, role } }
+    options: {
+      data: { full_name: fullName, role },
+      // Without this, confirmation links fall back to the Supabase Site URL
+      // (often localhost), so the mail link never returns to the deployed app.
+      emailRedirectTo: appUrl('home')
+    }
   })
 }
 
 export async function signIn({ email, password }) {
-  return requireSupabase().auth.signInWithPassword({ email, password })
+  return requireSupabase().auth.signInWithPassword({ email: normalizeEmail(email), password })
 }
 
 export async function signOut() {
@@ -66,14 +77,17 @@ export async function updateCurrentProfile(changes) {
 }
 
 export async function updateCurrentUserEmail(email) {
-  return requireSupabase().auth.updateUser({ email })
+  return requireSupabase().auth.updateUser({
+    email: normalizeEmail(email),
+    options: { emailRedirectTo: appUrl('home') }
+  })
 }
 
 export async function resetPassword(email) {
   const client = requireSupabase()
-  const { data: { url } } = await client.auth.getSession()
-  const redirectTo = window.location.origin + '/login'
-  return client.auth.resetPasswordForEmail(email, { redirectTo })
+  // Must point at the app's real path (e.g. /Drinklyy/login on GitHub Pages),
+  // otherwise the reset link from the mail opens a dead page.
+  return client.auth.resetPasswordForEmail(normalizeEmail(email), { redirectTo: appUrl('login') })
 }
 
 export async function updatePassword(newPassword) {
